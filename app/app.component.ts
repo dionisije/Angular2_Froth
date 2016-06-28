@@ -5,6 +5,7 @@
 import { Component } from '@angular/core';
 import { ROUTER_DIRECTIVES, Routes, ROUTER_PROVIDERS } from '@angular/router';
 import {HomeComponent} from "./static/home.component";
+import {HistoryComponent} from "./static/history.component";
 
 @Component({
     selector: 'froth-app',
@@ -15,7 +16,8 @@ import {HomeComponent} from "./static/home.component";
 
 @Routes([
     { path: '/', component: HomeComponent },
-    { path: '/home', component: HomeComponent }
+    { path: '/home', component: HomeComponent },
+    { path: '/history', component: HistoryComponent }
 ])
 
 export class AppComponent {
