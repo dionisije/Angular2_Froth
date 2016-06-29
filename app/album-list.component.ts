@@ -16,12 +16,8 @@ export class AlbumListComponent implements OnInit {
     errorMessage: string;
     albums: IAlbum[];
 
-    private _items: string[] = ['one', 'two', 'three', 'four', 'five'];
-
     constructor(private _albumService: AlbumService) { }
-
-
-
+    
     ngOnInit(): void {
         this._albumService.getAlbums()
             .subscribe(
