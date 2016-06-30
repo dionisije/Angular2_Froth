@@ -11,8 +11,8 @@
                     <th>Catalogue</th>
                 </tr>
             </thead>
-            <tbody *ngFor="let item of albums">
-                <tr>
+            <tbody>
+                <tr *ngFor="let item of albums" (click)="somethingClicked(item)">
                     <td>{{item.Album}}</td>
                     <td>{{item.Year}}</td>
                     <td>{{item.Catalogue}}</td>

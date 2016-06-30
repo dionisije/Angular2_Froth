@@ -17,14 +17,14 @@ export class AlbumService {
     getAlbums(): Observable<IAlbum[]> {
         return this._http.get(this._albumUrl)
             .map((response: Response) => <IAlbum[]> response.json())
-            .do(data => console.log(JSON.stringify(data)))
+            //.do(data => console.log(JSON.stringify(data)))
             .catch(this.handleError);
     }
 
-    //getAlbum(id: number): Observable<IAlbum> {
-    //    return this.getAlbum()
-    //        .map((products: IAlbum[]) => products.find(item => item.catalogue === id));
-    //}
+    getAlbum(id: string): Observable<IAlbum> {
+        return this.getAlbums()
+            .map((albums: IAlbum[]) => albums.find(item => item.catalogue === id));
+    }
 
     private handleError(error: Response) {
         console.error(error);

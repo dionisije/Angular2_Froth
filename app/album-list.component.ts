@@ -3,7 +3,7 @@
  */
 
 import { Component, OnInit } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
+import { ROUTER_DIRECTIVES, Router } from '@angular/router';
 import {AlbumService} from "./album.service";
 import {IAlbum} from "./album";
 
@@ -16,7 +16,10 @@ export class AlbumListComponent implements OnInit {
     errorMessage: string;
     albums: IAlbum[];
 
-    constructor(private _albumService: AlbumService) { }
+    constructor(
+        private _albumService: AlbumService,
+        private _router: Router
+    ) { }
     
     ngOnInit(): void {
         this._albumService.getAlbums()
@@ -24,5 +27,12 @@ export class AlbumListComponent implements OnInit {
                 albums => this.albums = albums,
                 error => this.errorMessage = <any>error
             );
+    }
+
+    somethingClicked(code: IAlbum): void {
+        console.log(code.Catalogue + " clicked!");
+        let route = ['/album', { id: code.Catalogue }];
+        this._router.navigate(route);
+
     }
 }
